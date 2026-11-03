@@ -1,5 +1,8 @@
 const SUPABASE_URL = "https://kjwocuzjcraxhtkokhrj.supabase.co";
-const SUPABASE_KEY = "ضع_PUBLISHABLE_KEY_هنا";
+
+// ضع هنا مفتاح Publishable الحقيقي من Supabase
+const SUPABASE_KEY = "ضع_المفتاح_هنا";
+
 const supabase = window.supabase.createClient(
   SUPABASE_URL,
   SUPABASE_KEY
@@ -17,21 +20,26 @@ document.addEventListener("DOMContentLoaded", function () {
       const email = prompt("اكتب البريد الإلكتروني:");
       if (!email) return;
 
-      const password = prompt("أنشئ كلمة مرور:");
+      const password = prompt("أنشئ كلمة مرور لا تقل عن 6 أحرف:");
       if (!password) return;
 
+      if (password.length < 6) {
+        alert("كلمة المرور قصيرة.");
+        return;
+      }
+
       const { error } = await supabase.auth.signUp({
-        email,
-        password,
+        email: email.trim(),
+        password: password,
         options: {
-          data: { full_name: fullName }
+          data: { full_name: fullName.trim() }
         }
       });
 
       if (error) {
         alert("حدث خطأ: " + error.message);
       } else {
-        alert("تم إنشاء الحساب. راجع بريدك الإلكتروني إذا طُلب منك تأكيده.");
+        alert("تم إرسال طلب إنشاء الحساب. راجع بريدك الإلكتروني إذا طُلب تأكيده.");
       }
     });
   }
@@ -45,8 +53,8 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!password) return;
 
       const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password
+        email: email.trim(),
+        password: password
       });
 
       if (error) {
