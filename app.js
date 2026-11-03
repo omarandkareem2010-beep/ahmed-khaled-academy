@@ -1,7 +1,7 @@
 const SUPABASE_URL = "https://kjwocuzjcraxhtkokhrj.supabase.co";
 
 // ضع هنا مفتاح Publishable الحقيقي من Supabase
-const SUPABASE_KEY = "ضع_المفتاح_هنا";
+const SUPABASE_KEY = "sb_publishable_oUzH9-zF1vxPKiGN2h3LXQ_AovJUn_Q";
 
 const supabase = window.supabase.createClient(
   SUPABASE_URL,
