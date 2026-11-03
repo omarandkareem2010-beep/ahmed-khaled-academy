@@ -2,12 +2,23 @@
 
 document.addEventListener("DOMContentLoaded", function () {
 
-  const buttons = document.querySelectorAll("button");
+  const signupBtn = document.getElementById("signupBtn");
+  const loginBtn = document.getElementById("loginBtn");
 
-  buttons.forEach(function(button) {
-    button.addEventListener("click", function() {
-      console.log("تم الضغط على: " + button.textContent);
+  // زر إنشاء الحساب
+  if (signupBtn) {
+    signupBtn.addEventListener("click", function () {
+      alert("إنشاء حساب الطالب سيتم تفعيله في الخطوة القادمة.");
     });
-  });
+  }
 
+  // زر تسجيل الدخول
+  if (loginBtn) {
+    loginBtn.addEventListener("click", function () {
+      alert("تسجيل دخول الطالب سيتم تفعيله في الخطوة القادمة.");
+    });
+  }
+
+  console.log("أكاديمية المؤرخ أحمد خالد جاهزة.");
 });
+
